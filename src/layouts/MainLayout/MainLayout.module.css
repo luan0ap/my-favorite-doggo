@@ -1,0 +1,26 @@
+.main-container,
+.main-container > .header,
+.main-container > .container {
+  box-sizing: border-box;
+}
+
+.main-container,
+.main-container > .header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.main-container > .header {
+  width: 100%;
+  margin: 15% 0 45px 0
+}
+
+.header_navigation > * {
+  margin: 0 10px;
+}

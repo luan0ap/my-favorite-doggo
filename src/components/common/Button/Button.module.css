@@ -1,0 +1,6 @@
+@import url('/css/style.variables.css');
+
+.button {
+  outline: none;
+  border: 1px solid var(--secondary)
+}

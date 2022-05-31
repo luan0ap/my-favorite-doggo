@@ -6,7 +6,9 @@ import reportWebVitals from './reportWebVitals'
 
 import App from './App'
 
+import 'css/style.variables.css'
 import 'css/reset.css'
+
 import './index.css'
 
 const root = ReactDOM.createRoot(document.querySelector('[data-js="root"]'))

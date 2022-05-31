@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import React from 'react'
 
-import styles from './App.module.css'
+import './App.css'
 
 import Home from 'pages/Home/Home.jsx'
 import Favorites from 'pages/Favorites/Favorites.jsx'

@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styles from './Button.module.css'
 import { Link } from 'react-router-dom'
+
+import './Button.css'
 
 const Button = ({
   border,
@@ -16,7 +17,7 @@ const Button = ({
   if (typeof to === 'string' && to.length > 0) {
     return (
       <Link
-        className={styles['button--link']}
+        className='button'
         to={to}
       >
         {children}
@@ -26,11 +27,10 @@ const Button = ({
 
   return (
     <button
-      className={styles.button}
+      className='button'
       onClick={onClick}
       style={{
-        backgroundColor: color, 
-        border,
+        backgroundColor: color,
         borderRadius: radius,
         height,
         width

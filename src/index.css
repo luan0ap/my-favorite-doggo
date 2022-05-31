@@ -1,5 +1,3 @@
-@import url('/css/style.variables.css');
-
 body {
   margin: 0;
   width: 100vw;
@@ -7,9 +5,7 @@ body {
   box-sizing: border-box;
   overflow-x: hidden;
   background: var(--primary);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 

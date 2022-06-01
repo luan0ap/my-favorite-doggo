@@ -44,7 +44,10 @@ const Button = ({
 Button.propTypes = {
   border: PropTypes.string,
   color: PropTypes.string,
-  children: PropTypes.element,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element
+  ]),
   height: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number

@@ -1,11 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styles from './Home.module.css'
+
+import './Home.css'
+
+import DogsList from 'components/Dogs/DogsList/DogsList.jsx'
 
 const Home = () => (
-  <div className={styles.Home}>
-    Home Component
-  </div>
+  <section className='home-page'>
+    <DogsList />
+  </section>
 )
 
 Home.propTypes = {}

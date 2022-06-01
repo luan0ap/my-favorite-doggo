@@ -1,26 +1,46 @@
 .main-container,
 .main-container > .header,
-.main-container > .container {
+.main-container > .container,
+.header > .header_navigation {
   box-sizing: border-box;
+  display: flex;
 }
 
 .main-container,
 .main-container > .header {
-  display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
 .main-container {
   width: 100vw;
   height: 100vh;
+  flex-direction: column;
 }
 
 .main-container > .header {
   width: 100%;
-  margin: 15% 0 45px 0
+  margin: 10% 0 45px 0
+}
+
+@media screen and (min-width: 1024px) {
+  .main-container>.header {
+    justify-content: center;
+  }
+}
+
+.header > .header_navigation {
+  flex-direction: row;
+  width: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+  .header>.header_navigation {
+    width: 25%
+  }
 }
 
 .header_navigation > * {
   margin: 0 10px;
+  flex-grow: 1;
 }
+

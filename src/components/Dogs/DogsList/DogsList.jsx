@@ -33,9 +33,17 @@ const DogsList = () => {
 
   return (
     <article className='dogs-list'>
-      {
-        dogs.map(({ data, status }, index) => <DogsCard key={index} status={status} data={data} />)
-      }
+      <ul className='dogs-list_list'>
+        {
+          dogs.map(({ data, status }, index) => {
+            return (
+              <li key={index}>
+                <DogsCard status={status} data={data} />
+              </li>
+            )
+          })
+        }
+      </ul>
     </article>
   )
 }

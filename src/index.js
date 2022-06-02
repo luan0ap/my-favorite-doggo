@@ -6,8 +6,9 @@ import reportWebVitals from './reportWebVitals'
 
 import App from './App'
 
-import 'css/style.variables.css'
+import 'css/variables.css'
 import 'css/reset.css'
+import 'css/helpers.css'
 
 import './index.css'
 

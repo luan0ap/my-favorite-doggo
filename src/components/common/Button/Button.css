@@ -1,9 +1,5 @@
-.button {
-  padding: 10px;
-  outline: none;
-  border: 1px solid var(--secondary);
-  text-decoration: none;
-  color: var(--tertiary);
+.button,
+.button > svg {
   background: transparent;
 
   -webkit-transform: perspective(1px) translateZ(0);
@@ -15,9 +11,40 @@
   transition-property: color, background-color;
 }
 
+.button {
+  display: flex;
+  padding: 10px;
+  outline: none;
+  border: 1px solid var(--secondary);
+  text-decoration: none;
+  color: var(--tertiary);
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bolder;
+}
+
+.button > svg {
+ font-size: 1.5rem;
+ color: var(--secondary);
+}
+
+@media screen and (min-width: 1024px) {
+  .button>svg {
+    width: 25%
+  }
+}
+
+.button:hover,
+.button:focus,
+.button:active,
+.button:hover>svg,
+.button:focus>svg,
+.button:active>svg {
+  color: var(--primary);
+}
+
 .button:hover,
 .button:focus,
 .button:active {
-  background-color: var(--secondary);
-  color: var(--primary);
+  background: var(--secondary);
 }

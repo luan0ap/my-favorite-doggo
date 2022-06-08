@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-import './Button.css'
+import './ButtonIcon.css'
 
 import { getComputedStyle, getStyleVariable } from 'utils'
 
-const Button = ({
+const ButtonIcon = ({
   borderColor = 'secondary',
   color = 'secondary',
   height,
@@ -17,8 +17,6 @@ const Button = ({
 }) => {
   const _color = getStyleVariable(getComputedStyle(), `--${color}`).trim() || color
   const _borderColor = getStyleVariable(getComputedStyle(), `--${borderColor}`).trim() || borderColor
-
-  // debugger
 
   if (typeof to === 'string' && to.length > 0) {
     return (
@@ -51,7 +49,7 @@ const Button = ({
   )
 }
 
-Button.propTypes = {
+ButtonIcon.propTypes = {
   border: PropTypes.string,
   color: PropTypes.string,
   height: PropTypes.oneOfType([
@@ -66,6 +64,6 @@ Button.propTypes = {
   onClick: PropTypes.func
 }
 
-Button.defaultProps = {}
+ButtonIcon.defaultProps = {}
 
-export default Button
+export default ButtonIcon

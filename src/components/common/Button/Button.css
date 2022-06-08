@@ -1,5 +1,5 @@
 .button,
-.button > svg {
+.button>svg {
   background: transparent;
 
   -webkit-transform: perspective(1px) translateZ(0);
@@ -15,24 +15,19 @@
   display: flex;
   padding: 10px;
   outline: none;
-  border: 1px solid var(--secondary);
+  border-width: 1px;
+  border-style: solid;
   text-decoration: none;
-  color: var(--tertiary);
   align-items: center;
   justify-content: space-between;
   font-weight: bolder;
+  border-radius: 5px;
 }
 
-.button > svg {
- font-size: 1.5rem;
- color: var(--secondary);
+.button>svg {
+  font-size: 1.5rem;
 }
 
-@media screen and (min-width: 1024px) {
-  .button>svg {
-    width: 25%
-  }
-}
 
 .button:hover,
 .button:focus,
@@ -40,11 +35,11 @@
 .button:hover>svg,
 .button:focus>svg,
 .button:active>svg {
-  color: var(--primary);
+  color: var(--primary)!important;
 }
 
 .button:hover,
 .button:focus,
 .button:active {
-  background: var(--secondary);
+  background: var(--secondary)!important;
 }

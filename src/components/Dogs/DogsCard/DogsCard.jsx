@@ -1,6 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 
 import './DogsCard.css'
 
@@ -39,7 +37,7 @@ const DogsCard = ({ status, data }) => {
   if (status === 'loading') {
     return (
       <div className='dogs-card'>
-        <div className='dogs-card_loader' />
+        <div className='dogs-card_loading'>Loading...</div>
       </div>
     )
   }
@@ -57,11 +55,13 @@ const DogsCard = ({ status, data }) => {
     )
   }
 
-  return (
-    <div className='dogs-card'>
-      <img className='dogs-card_media' src={data.url} type={`image/${extension}`} />
-    </div>
-  )
+  if (format === 'image') {
+    return (
+      <div className='dogs-card'>
+        <img className='dogs-card_media' src={data.url} type={`image/${extension}`} />
+      </div>
+    )
+  }
 }
 
 DogsCard.propTypes = {}

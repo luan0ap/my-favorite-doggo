@@ -1,7 +1,12 @@
+.dogs-card,
+.dogs-card .dogs-card_media {
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
 .dogs-card {
   width: 100%;
   height: 400px;
-  box-sizing: border-box;
   border: 1px solid var(--tertiary);
   border-bottom: 2px solid var(--tertiary);
   border-right: 2px solid var(--tertiary);

@@ -12,3 +12,18 @@ export const filledEmptyArray = (n) => {
 
   return zerosArray
 }
+
+/**
+ * Get Computed style of an element
+ * @param {Element} $el
+ * @returns CSSStyleDeclaration
+ */
+export const getComputedStyle = ($el = document.documentElement) => window.getComputedStyle($el)
+
+/**
+ * Get variable from computed style
+ * @param {CSSStyleDeclaration} style
+ * @param {String} variable
+ * @returns
+ */
+export const getStyleVariable = (style, variable) => style.getPropertyValue(variable)

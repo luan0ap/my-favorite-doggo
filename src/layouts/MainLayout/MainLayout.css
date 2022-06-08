@@ -16,6 +16,20 @@
   flex-direction: column;
 }
 
+.main-container_separator {
+  margin: 50px 0;
+  background-color: var(--secondary);
+  width: 50%;
+  height: 1px;
+}
+
+@media screen and (min-width: 768px) {
+  .main-container_separator {
+    width: 25%;
+  }
+}
+
+
 .container {
   width: 100%;
   height: auto;
@@ -24,7 +38,7 @@
 
 .main-container > .header {
   width: 100%;
-  margin: 50px 0
+  margin: 50px 0 0 0
 }
 
 @media screen and (min-width: 1024px) {
@@ -44,8 +58,8 @@
   .header>.header_navigation {
     width: 25%
   }
-}
 
-.header_navigation > * {
-  flex-grow: 0.2;
+  .header_navigation>* {
+    flex-grow: 0.2;
+  }
 }

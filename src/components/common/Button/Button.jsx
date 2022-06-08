@@ -18,8 +18,6 @@ const Button = ({
   const _color = getStyleVariable(getComputedStyle(), `--${color}`).trim() || color
   const _borderColor = getStyleVariable(getComputedStyle(), `--${borderColor}`).trim() || borderColor
 
-  // debugger
-
   if (typeof to === 'string' && to.length > 0) {
     return (
       <Link

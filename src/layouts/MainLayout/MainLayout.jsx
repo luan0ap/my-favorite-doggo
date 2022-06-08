@@ -4,9 +4,7 @@ import { QueryClientProvider, QueryClient } from 'react-query'
 
 import './MainLayout.css'
 
-import HomeIcon from '@mui/icons-material/Home'
-import StarIcon from '@mui/icons-material/Star'
-import RefreshOutlinedIcon from '@mui/icons-material/RefreshOutlined'
+import { Icon } from '@mui/material'
 
 import Button from 'components/common/Button/Button.jsx'
 import Separator from 'components/common/Separator/Separator.jsx'
@@ -24,13 +22,27 @@ const MainLayout = () => (
       <div className='main-container'>
         <header className='header'>
           <nav className='header_navigation'>
-            <Button to='/'>Home <HomeIcon /></Button>
-            <Button to='/favorites'>Favorites <StarIcon /></Button>
-            <Button onClick={emitRefreshDogs}>Refresh <RefreshOutlinedIcon /></Button>
+            <div>
+              <Button to='/'>
+                <span className='desktop-only'>Home</span> <Icon>home</Icon>
+              </Button>
+            </div>
+
+            <div>
+              <Button to='/favorites'>
+                <span className='desktop-only'>Favorites</span> <Icon>star</Icon>
+              </Button>
+            </div>
+
+            <div>
+              <Button onClick={emitRefreshDogs}>
+                <span className='desktop-only'>Refresh</span> <Icon>refresh_outlined</Icon>
+              </Button>
+            </div>
           </nav>
         </header>
 
-        <Separator color='secondary' width='25%' height='1px' />
+        <Separator className='main-container_separator' />
 
         <main className='container'>
           <Outlet />

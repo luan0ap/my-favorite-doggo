@@ -5,15 +5,16 @@ import './Separator.css'
 const Separator = ({
   color,
   width,
-  height
+  height,
+  className
 }) => (
   <hr
     style={{
-      backgroundColor: `var(--${color})`,
+      backgroundColor: color && `var(--${color})`,
       width,
       height
     }}
-    className='separator'
+    className={`separator ${className}`}
   />
 )
 

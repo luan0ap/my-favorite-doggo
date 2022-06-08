@@ -1,28 +1,20 @@
 .desktop-only {
-  display: none;
+  display: none!important;
 }
 
 @media screen and (min-width: 1024px) {
-  .mobile-only {
-    display: none;
-  }
-
   .desktop-only {
-    display: block;
+    display: block!important;
   }
 }
 
 .mobile-only {
-  display: none;
+  display: none!important;
 }
 
 @media screen and (max-width: 1024px) {
   .mobile-only {
-    display: block;
-  }
-
-  .desktop-only {
-    display: none;
+    display: block!important;
   }
 }
 

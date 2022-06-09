@@ -52,8 +52,4 @@ const MainLayout = () => (
   </React.StrictMode>
 )
 
-MainLayout.propTypes = {}
-
-MainLayout.defaultProps = {}
-
 export default MainLayout

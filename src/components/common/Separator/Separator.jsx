@@ -18,7 +18,18 @@ const Separator = ({
   />
 )
 
-Separator.propTypes = {}
+Separator.propTypes = {
+  color: PropTypes.string,
+  width: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  height: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
+  className: PropTypes.string
+}
 
 Separator.defaultProps = {}
 

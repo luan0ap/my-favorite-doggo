@@ -50,6 +50,7 @@ const Button = ({
 }
 
 Button.propTypes = {
+  to: PropTypes.string,
   border: PropTypes.string,
   color: PropTypes.string,
   height: PropTypes.oneOfType([
@@ -64,6 +65,9 @@ Button.propTypes = {
   onClick: PropTypes.func
 }
 
-Button.defaultProps = {}
+Button.defaultProps = {
+  borderColor: 'secondary',
+  color: 'secondary'
+}
 
 export default Button

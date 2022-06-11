@@ -1,7 +1,7 @@
 .main-container,
 .main-container > .header,
 .main-container > .container,
-.header > .header_navigation {
+.header > .header__navigation {
   box-sizing: border-box;
   display: flex;
 }
@@ -16,7 +16,7 @@
   flex-direction: column;
 }
 
-.main-container_separator {
+.main-container__separator {
   margin: 50px 0;
   background-color: var(--secondary);
   width: 50%;
@@ -24,7 +24,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .main-container_separator {
+  .main-container__separator {
     width: 25%;
   }
 }
@@ -53,7 +53,7 @@
   }
 }
 
-.header > .header_navigation {
+.header > .header__navigation {
   flex-direction: row;
   justify-content: center;
   width: 100%;
@@ -61,11 +61,11 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .header>.header_navigation {
+  .header>.header__navigation {
     width: 25%
   }
 
-  .header_navigation>* {
+  .header__navigation>* {
     flex-grow: 0.2;
   }
 }

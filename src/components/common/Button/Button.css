@@ -1,7 +1,5 @@
 .button,
 .button>svg {
-  background: transparent;
-
   -webkit-transform: perspective(1px) translateZ(0);
   transform: perspective(1px) translateZ(0);
   overflow: hidden;
@@ -21,13 +19,8 @@
   align-items: center;
   justify-content: space-between;
   font-weight: bolder;
-  border-radius: 5px;
+  text-align: center;
 }
-
-.button>svg {
-  font-size: 1.5rem;
-}
-
 
 .button:hover,
 .button:focus,

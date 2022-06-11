@@ -1,6 +1,7 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { QueryClientProvider, QueryClient } from 'react-query'
+import { DogsStorageProvider } from 'context/DogsStorage.jsx'
 
 import './MainLayout.css'
 
@@ -18,37 +19,39 @@ const emitRefreshDogs = () => EventBus.$emit('DOGSLIST_REFRESH')
 const MainLayout = () => (
 
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <div className='main-container'>
-        <header className='header'>
-          <nav className='header_navigation'>
-            <div>
-              <Button to='/'>
-                <span className='desktop-only'>Home</span> <Icon>home</Icon>
-              </Button>
-            </div>
+    <DogsStorageProvider>
+      <QueryClientProvider client={queryClient}>
+        <div className='main-container'>
+          <header className='header'>
+            <nav className='header__navigation'>
+              <div>
+                <Button to='/'>
+                  <span className='desktop-only'>Home</span> <Icon>home</Icon>
+                </Button>
+              </div>
 
-            <div>
-              <Button to='/favorites'>
-                <span className='desktop-only'>Favorites</span> <Icon>star</Icon>
-              </Button>
-            </div>
+              <div>
+                <Button to='/favorites'>
+                  <span className='desktop-only'>Favorites</span> <Icon>star</Icon>
+                </Button>
+              </div>
 
-            <div>
-              <Button onClick={emitRefreshDogs}>
-                <span className='desktop-only'>Refresh</span> <Icon>refresh_outlined</Icon>
-              </Button>
-            </div>
-          </nav>
-        </header>
+              <div>
+                <Button onClick={emitRefreshDogs}>
+                  <span className='desktop-only'>Refresh</span> <Icon>refresh_outlined</Icon>
+                </Button>
+              </div>
+            </nav>
+          </header>
 
-        <Separator className='main-container_separator' />
+          <Separator className='main-container__separator' />
 
-        <main className='container'>
-          <Outlet />
-        </main>
-      </div>
-    </QueryClientProvider>
+          <main className='container'>
+            <Outlet />
+          </main>
+        </div>
+      </QueryClientProvider>
+    </DogsStorageProvider>
   </React.StrictMode>
 )
 

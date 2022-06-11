@@ -7,7 +7,7 @@ import DogsCard from 'components/Dogs/DogsCard/DogsCard.jsx'
 function DogsList ({ dogs }) {
   return (
     <article className='dogs-list'>
-      <ul className='dogs-list_list'>
+      <ul className='dogs-list__list'>
         {
           dogs.map(({ data, status }, index) => {
             return (
@@ -25,7 +25,7 @@ function DogsList ({ dogs }) {
 DogsList.propTypes = {
   dogs: PropTypes.arrayOf(PropTypes.shape({
     data: PropTypes.shape({ url: PropTypes.string.isRequired }),
-    status: PropTypes.string.isRequired
+    status: PropTypes.string
   })).isRequired
 }
 

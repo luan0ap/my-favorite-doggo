@@ -4,7 +4,7 @@
   justify-content: center;
 }
 
-.dogs-list_list {
+.dogs-list__list {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -14,7 +14,7 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .dogs-list_list {
+  .dogs-list__list {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px
   }

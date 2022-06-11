@@ -1,6 +1,6 @@
 import Storage from 'utils/LocalStorage'
 
-export class FavoriteDogStorage {
+export class DogsStorage {
   constructor (storageName) {
     this.storage = Storage(storageName)
     this.dogs = this.storage.get()
@@ -14,9 +14,15 @@ export class FavoriteDogStorage {
     return this.dogs
   }
 
+  has ({ url = '' } = {}) {
+    return this.dogs.some(({ url: _url }) => _url === url)
+  }
+
   set (dogData) {
-    this.storage.set([...this.dogs, { ...dogData }])
-    this.dogs = [...this.dogs, { ...dogData }]
+    if (dogData && Object.keys(dogData).length > 0 && !this.has(dogData)) {
+      this.storage.set([...this.dogs, { ...dogData }])
+      this.dogs = [...this.dogs, { ...dogData }]
+    }
   }
 
   delete (url) {
@@ -26,4 +32,4 @@ export class FavoriteDogStorage {
   }
 }
 
-export default FavoriteDogStorage
+export default DogsStorage

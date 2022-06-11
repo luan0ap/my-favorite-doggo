@@ -9,22 +9,28 @@ import { getComputedStyle, getStyleVariable } from 'utils'
 const Button = ({
   borderColor = 'secondary',
   color = 'secondary',
+  bgColor = 'transparent',
   height,
   width,
   onClick,
   children,
-  to
+  to,
+  className = '',
+  borderRadius = '5px'
 }) => {
   const _color = getStyleVariable(getComputedStyle(), `--${color}`).trim() || color
   const _borderColor = getStyleVariable(getComputedStyle(), `--${borderColor}`).trim() || borderColor
+  const _backgroundColor = getStyleVariable(getComputedStyle(), `--${bgColor}`).trim() || bgColor
 
   if (typeof to === 'string' && to.length > 0) {
     return (
       <Link
-        className='button'
+        className={`button ${className}`}
         style={{
+          borderRadius,
           color: _color,
-          borderColor: _borderColor
+          borderColor: _borderColor,
+          backgroundColor: _backgroundColor
         }}
         to={to}
       >
@@ -35,13 +41,15 @@ const Button = ({
 
   return (
     <button
-      className='button'
+      className={`button ${className}`}
       onClick={onClick}
       style={{
-        color: _color,
+        borderRadius,
         height,
         width,
-        borderColor: _borderColor
+        color: _color,
+        borderColor: _borderColor,
+        backgroundColor: _backgroundColor
       }}
     >
       {children}
@@ -62,7 +70,9 @@ Button.propTypes = {
     PropTypes.number
   ]),
   radius: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  className: PropTypes.string,
+  bgColor: PropTypes.string
 }
 
 Button.defaultProps = {

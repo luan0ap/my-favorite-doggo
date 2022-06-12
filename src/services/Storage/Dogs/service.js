@@ -6,8 +6,8 @@ export class DogsStorage {
     this.dogs = this.storage.get()
   }
 
-  get (dogUrl) {
-    return this.dogs.find(({ url }) => dogUrl === url)
+  get ({ url = '' } = {}) {
+    return this.dogs.find(({ data }) => data.url === url)
   }
 
   getAll () {
@@ -15,18 +15,16 @@ export class DogsStorage {
   }
 
   has ({ url = '' } = {}) {
-    return this.dogs.some(({ url: _url }) => _url === url)
+    return this.dogs.some(({ data }) => data.url === url)
   }
 
-  set (dogData) {
-    if (dogData && Object.keys(dogData).length > 0 && !this.has(dogData)) {
-      this.storage.set([...this.dogs, { ...dogData }])
-      this.dogs = [...this.dogs, { ...dogData }]
-    }
+  set ({ data } = {}) {
+    this.storage.set([...this.dogs, { data }])
+    this.dogs = [...this.dogs, { data }]
   }
 
-  delete (url) {
-    const dogsUpdated = this.dogs.filter(dog => dog.url !== url)
+  remove ({ url = '' } = {}) {
+    const dogsUpdated = this.dogs.filter(({ data }) => data.url !== url)
     this.storage.set(dogsUpdated)
     this.dogs = [...dogsUpdated]
   }

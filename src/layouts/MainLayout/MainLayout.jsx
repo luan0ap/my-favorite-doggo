@@ -1,7 +1,7 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { QueryClientProvider, QueryClient } from 'react-query'
-import { DogsStorageProvider } from 'context/DogsStorage.jsx'
+import { DogsFavoriteStorageProvider } from 'context/DogsFavoriteStorage.jsx'
 
 import './MainLayout.css'
 
@@ -19,7 +19,7 @@ const emitRefreshDogs = () => EventBus.$emit('DOGSLIST_REFRESH')
 const MainLayout = () => (
 
   <React.StrictMode>
-    <DogsStorageProvider>
+    <DogsFavoriteStorageProvider>
       <QueryClientProvider client={queryClient}>
         <div className='main-container'>
           <header className='header'>
@@ -51,7 +51,7 @@ const MainLayout = () => (
           </main>
         </div>
       </QueryClientProvider>
-    </DogsStorageProvider>
+    </DogsFavoriteStorageProvider>
   </React.StrictMode>
 )
 

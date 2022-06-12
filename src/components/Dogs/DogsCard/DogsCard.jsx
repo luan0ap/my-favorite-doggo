@@ -6,7 +6,7 @@ import './DogsCard.css'
 import Button from 'components/common/Button/Button.jsx'
 import { Icon } from '@mui/material'
 
-import { DogsStorageContext } from 'context/DogsStorage'
+import { DogsFavoriteStorageContext } from 'context/DogsFavoriteStorage'
 
 const fileExtension = (url = '') => url.split('.').pop()
 
@@ -39,7 +39,28 @@ const getFileFormat = (url = '') => {
   return 'unknown'
 }
 
-const DogsCard = ({ status, data, isFavorite }) => {
+const getMediaElementByFormat = ({ data = {} } = {}) => {
+  const format = getFileFormat(data.url)
+  const extension = fileExtension(data.url)
+
+  if (format === 'video') {
+    return (
+      <video className='dogs-card__media' autoPlay loop muted>
+        <source src={data.url} type={`video/${extension}`} />
+      </video>
+    )
+  }
+
+  if (format === 'image') {
+    return (
+      <img className='dogs-card__media' src={data.url} alt={data.name} />
+    )
+  }
+
+  return null
+}
+
+const DogsCard = ({ status, data }) => {
   if (status === 'loading') {
     return (
       <div className='dogs-card'>
@@ -48,51 +69,28 @@ const DogsCard = ({ status, data, isFavorite }) => {
     )
   }
 
-  const { setDogs } = useContext(DogsStorageContext)
-  const format = getFileFormat(data.url)
-  const extension = fileExtension(data.url)
+  const { favorite, unfavorite } = useContext(DogsFavoriteStorageContext)
+  const mediaElement = getMediaElementByFormat({ data })
 
-  if (format === 'video') {
-    return (
-      <div className='dogs-card'>
-        <video className='dogs-card__media' autoPlay loop muted>
-          <source src={data.url} type={`video/${extension}`} />
-        </video>
-        <div className='dogs-card__favorite'>
-          <Button
-            bgColor='secondary'
-            color='primary'
-            className='button--favorite'
-            onClick={() => setDogs({ data: { ...data, favorite: true } })}
-          >
-            <span>Favorite</span> <Icon fontSize='medium'>star</Icon>
-          </Button>
-        </div>
-      </div>
-    )
-  }
-
-  if (format === 'image') {
-    return (
-      <div className='dogs-card'>
-        <img className='dogs-card__media' src={data.url} type={`image/${extension}`} alt='A dog' />
-        <div className='dogs-card__favorite'>
-          <Button
-            bgColor='secondary'
-            color='primary'
-            className='button--favorite'
-            onClick={() => setDogs({ data: { ...data, favorite: true } })}
-          >
-            <span>Favorite</span> <Icon fontSize='medium'>star</Icon>
-          </Button>
-        </div>
-      </div>
-    )
+  if (mediaElement === null) {
+    return null
   }
 
   return (
     <div className='dogs-card'>
-      <div className='dogs-card__loading'>Unknown format</div>
+      {
+       mediaElement
+      }
+      <div className='dogs-card__favorite'>
+        <Button
+          bgColor='secondary'
+          color='primary'
+          className='button--favorite'
+          onClick={() => data.favorite === true ? unfavorite({ data }) : favorite({ data })}
+        >
+          <span>Favorite</span>{data.favorite === true ? <Icon fontSize='medium'>star</Icon> : <Icon fontSize='medium'>star_border</Icon>}
+        </Button>
+      </div>
     </div>
   )
 }

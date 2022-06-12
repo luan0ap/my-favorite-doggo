@@ -18,34 +18,26 @@
   }
 }
 
-.full-width {
-  width: 100%;
-}
-
-.no-border {
-  border: none;
-}
-
 .bg-primary {
-  background-color: var(--primary);
+  background-color: rgb(var(--primary));
 }
 
 .bg-secondary {
-  background-color: var(--secondary);
+  background-color: rgb(var(--secondary));
 }
 
 .bg-tertiary {
-  background-color: var(--tertiary);
+  background-color: rgb(var(--tertiary));
 }
 
 .text-primary {
-  color: var(--primary);
+  color: rgb(var(--primary));
 }
 
 .text-secondary {
-  color: var(--secondary);
+  color: rgb(var(--secondary));
 }
 
 .text-tertiary {
-  color: var(--tertiary);
+  color: rgb(var(--tertiary));
 }

@@ -60,16 +60,49 @@ const getMediaElementByFormat = ({ data = {} } = {}) => {
   return null
 }
 
-const DogsCard = ({ status, data }) => {
+const FavoriteButton = ({ data } = {}) => {
+  const { favorite, unfavorite } = useContext(DogsFavoriteStorageContext)
+
+  if (data.favorite === true) {
+    return (
+      <Button
+        borderColor='primary'
+        color='primary'
+        className='button--favorite'
+        onClick={() => {
+          unfavorite({ data })
+          data.favorite = false
+        }}
+      >
+        <span>Unfavorite</span> <Icon fontSize='medium'>star</Icon>
+      </Button>
+    )
+  }
+
+  return (
+    <Button
+      borderColor='primary'
+      color='primary'
+      className='button--favorite'
+      onClick={() => {
+        favorite({ data })
+        data.favorite = true
+      }}
+    >
+      <span>Favorite</span><Icon fontSize='medium'>star_border</Icon>
+    </Button>
+  )
+}
+
+const DogsCard = ({ status, data, className = '' }) => {
   if (status === 'loading') {
     return (
-      <div className='dogs-card'>
+      <div className={`dogs-card ${className}`}>
         <div className='dogs-card__loading'>Loading...</div>
       </div>
     )
   }
 
-  const { favorite, unfavorite } = useContext(DogsFavoriteStorageContext)
   const mediaElement = getMediaElementByFormat({ data })
 
   if (mediaElement === null) {
@@ -77,19 +110,12 @@ const DogsCard = ({ status, data }) => {
   }
 
   return (
-    <div className='dogs-card'>
+    <div className={`dogs-card ${className}`}>
       {
        mediaElement
       }
       <div className='dogs-card__favorite'>
-        <Button
-          bgColor='secondary'
-          color='primary'
-          className='button--favorite'
-          onClick={() => data.favorite === true ? unfavorite({ data }) : favorite({ data })}
-        >
-          <span>Favorite</span>{data.favorite === true ? <Icon fontSize='medium'>star</Icon> : <Icon fontSize='medium'>star_border</Icon>}
-        </Button>
+        <FavoriteButton data={data} />
       </div>
     </div>
   )
@@ -100,9 +126,7 @@ DogsCard.propTypes = {
   data: PropTypes.shape({
     url: PropTypes.string
   }),
-  className: PropTypes.string,
-  style: PropTypes.object,
-  onClick: PropTypes.func
+  className: PropTypes.string
 }
 
 DogsCard.defaultProps = {}

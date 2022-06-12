@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 
 import { DogsFavoriteStorageProvider } from 'context/DogsFavoriteStorage.jsx'
 import { DogsQueryProvider, DogsQueryContext } from 'context/DogsQuery.jsx'
@@ -22,6 +22,8 @@ const RefresButton = () => {
 }
 
 const MainLayout = () => {
+  const location = useLocation()
+
   return (
     <React.StrictMode>
       <DogsFavoriteStorageProvider>
@@ -41,9 +43,7 @@ const MainLayout = () => {
                   </Button>
                 </div>
 
-                <div>
-                  <RefresButton />
-                </div>
+                {location.pathname === '/' ? <div> <RefresButton /> </div> : null}
               </nav>
             </header>
 

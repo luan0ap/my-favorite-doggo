@@ -10,7 +10,7 @@ const Separator = ({
 }) => (
   <hr
     style={{
-      backgroundColor: color && `var(--${color})`,
+      backgroundColor: color && `rgb(var(--${color}))`,
       width,
       height
     }}

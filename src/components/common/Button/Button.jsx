@@ -7,20 +7,20 @@ import './Button.css'
 import { getComputedStyle, getStyleVariable } from 'utils'
 
 const Button = ({
-  borderColor = 'secondary',
-  color = 'secondary',
-  bgColor = 'transparent',
+  bgColor,
   height,
   width,
   onClick,
   children,
   to,
   className = '',
-  borderRadius = '5px'
+  borderRadius = '5px',
+  borderColor = 'secondary',
+  color = 'secondary'
 }) => {
-  const _color = getStyleVariable(getComputedStyle(), `--${color}`).trim() || color
-  const _borderColor = getStyleVariable(getComputedStyle(), `--${borderColor}`).trim() || borderColor
-  const _backgroundColor = getStyleVariable(getComputedStyle(), `--${bgColor}`).trim() || bgColor
+  const _color = getStyleVariable(getComputedStyle(), `--${color}`).trim()
+  const _borderColor = getStyleVariable(getComputedStyle(), `--${borderColor}`).trim()
+  const _backgroundColor = getStyleVariable(getComputedStyle(), `--${bgColor}`).trim()
 
   if (typeof to === 'string' && to.length > 0) {
     return (
@@ -28,9 +28,9 @@ const Button = ({
         className={`button ${className}`}
         style={{
           borderRadius,
-          color: _color,
-          borderColor: _borderColor,
-          backgroundColor: _backgroundColor
+          color: _color ? `rgb(${_color})` : color,
+          borderColor: _borderColor ? `rgb(${_borderColor})` : color,
+          backgroundColor: _backgroundColor ? `rgb(${_backgroundColor})` : color
         }}
         to={to}
       >
@@ -47,9 +47,9 @@ const Button = ({
         borderRadius,
         height,
         width,
-        color: _color,
-        borderColor: _borderColor,
-        backgroundColor: _backgroundColor
+        color: _color ? `rgb(${_color})` : color,
+        borderColor: _borderColor ? `rgb(${_borderColor})` : color,
+        backgroundColor: _backgroundColor ? `rgb(${_backgroundColor})` : color
       }}
     >
       {children}
@@ -59,7 +59,6 @@ const Button = ({
 
 Button.propTypes = {
   to: PropTypes.string,
-  border: PropTypes.string,
   color: PropTypes.string,
   height: PropTypes.oneOfType([
     PropTypes.string,
@@ -69,15 +68,17 @@ Button.propTypes = {
     PropTypes.string,
     PropTypes.number
   ]),
-  radius: PropTypes.string,
+  borderRadius: PropTypes.string,
   onClick: PropTypes.func,
   className: PropTypes.string,
-  bgColor: PropTypes.string
+  bgColor: PropTypes.string,
+  borderColor: PropTypes.string
 }
 
 Button.defaultProps = {
   borderColor: 'secondary',
-  color: 'secondary'
+  color: 'secondary',
+  borderRadius: '5px'
 }
 
 export default Button

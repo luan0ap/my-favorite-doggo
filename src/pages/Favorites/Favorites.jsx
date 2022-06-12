@@ -10,7 +10,7 @@ const Favorites = () => {
   const { dogs } = useContext(DogsFavoriteStorageContext)
 
   return (
-    <section className='home-page'>
+    <section className='favorites-page'>
       <DogsList dogs={dogs} />
     </section>
   )

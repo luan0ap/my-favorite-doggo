@@ -28,11 +28,11 @@
 .button:hover>svg,
 .button:focus>svg,
 .button:active>svg {
-  color: var(--primary)!important;
+  color: rgb(var(--primary))!important;
 }
 
 .button:hover,
 .button:focus,
 .button:active {
-  background: var(--secondary)!important;
+  background: rgb(var(--secondary))!important;
 }

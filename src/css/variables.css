@@ -1,5 +1,5 @@
 :root {
-  --primary: #f9f9f9;
-  --secondary: #8d593b;
-  --tertiary: #201F24;
+  --primary: 249, 249, 249;
+  --secondary: 141, 89, 59;
+  --tertiary: 32, 31, 36;
 }

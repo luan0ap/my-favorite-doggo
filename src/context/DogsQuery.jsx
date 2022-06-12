@@ -1,26 +1,52 @@
-import React, { createContext, useState } from 'react'
-import { DogsStorage } from 'services/Storage/Dogs'
+import React, { createContext } from 'react'
+import { useQueries } from 'react-query'
 
-const dogsStorage = new DogsStorage('luan0ap/dogs')
+import { filledEmptyArray } from 'utils/'
 
-const DogsStorageContext = createContext()
+const TOTAL_DOGS = 10
 
-const DogsStorageProvider = ({ children }) => {
-  const [dogs, setDogs] = useState(dogsStorage.getAll())
+const fetchDog = () => fetch('https://random.dog/woof.json').then(res => res.json())
 
-  return (
-    <DogsStorageContext.Provider
-      value={{
-        dogs,
-        setDogs: (dog) => {
-          dogsStorage.set(dog)
-          setDogs([...dogs, dog])
-        }
-      }}
-    >
-      {children}
-    </DogsStorageContext.Provider>
+const useDogsQueries = () => {
+  return useQueries(
+    filledEmptyArray(TOTAL_DOGS).map((zero, index) => {
+      return {
+        queryKey: ['dogs', `dog-${index}`],
+        queryFn: () => fetchDog(),
+        retry: true,
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
+        refetchOnMount: false,
+        keepPreviousData: false,
+        cacheTime: -1,
+        enabled: false
+      }
+    })
   )
 }
 
-export { DogsStorageProvider, DogsStorageContext }
+const DogsQueryContext = createContext()
+
+const DogsQueryProvider = ({ children }) => {
+  const queries = useDogsQueries()
+
+  const refresh = () => {
+    for (const query of queries) {
+      query.remove()
+      query.refetch()
+    }
+  }
+
+  return (
+    <DogsQueryContext.Provider
+      value={{
+        queries,
+        refresh
+      }}
+    >
+      {children}
+    </DogsQueryContext.Provider>
+  )
+}
+
+export { DogsQueryProvider, DogsQueryContext }

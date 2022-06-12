@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
+import { QueryClientProvider, QueryClient } from 'react-query'
 
 import reportWebVitals from './reportWebVitals'
 
@@ -12,11 +13,15 @@ import 'css/helpers.css'
 
 import './index.css'
 
+const queryClient = new QueryClient()
+
 const root = ReactDOM.createRoot(document.querySelector('[data-js="root"]'))
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <QueryClientProvider client={queryClient}>
+        <App />
+      </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>
 )

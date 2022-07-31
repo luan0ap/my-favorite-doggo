@@ -1,4 +1,4 @@
-import React, { useId } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 import './DogsList.css'
@@ -9,9 +9,9 @@ function DogsList ({ dogs }) {
     <article className='dogs-list'>
       <ul className='dogs-list__list'>
         {
-          dogs.map(({ data, status }) => {
+          dogs.map(({ data, status }, index) => {
             return (
-              <li key={useId()}>
+              <li key={index}>
                 <DogsCard status={status} data={data} />
               </li>
             )
